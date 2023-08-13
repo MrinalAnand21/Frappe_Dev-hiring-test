@@ -1,0 +1,49 @@
+<!-- library/templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Library Management System</h1>
+        
+        <!-- Form to import books -->
+        <form id="importForm">
+            <div class="form-group">
+                <label for="numBooks">Number of Books to Import:</label>
+                <input type="number" class="form-control" id="numBooks" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Import Books</button>
+        </form>
+        
+        <!-- Other forms and UI elements go here -->
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // AJAX for importing books
+            $('#importForm').submit(function(event) {
+                event.preventDefault();
+                var numBooks = $('#numBooks').val();
+                $.ajax({
+                    url: '/api/books/', // Adjust the URL as needed
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ 'num_books': numBooks }),
+                    success: function(response) {
+                        alert('Books imported successfully.');
+                    }
+                });
+            });
+            
+            // Implement similar AJAX calls for other operations
+        });
+    </script>
+</body>
+</html>

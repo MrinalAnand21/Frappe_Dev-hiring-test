@@ -1,0 +1,11 @@
+<!-- library/templates/issue_book.html -->
+{% extends 'index.html' %}
+
+{% block content %}
+<h2>Issue a Book to a Member</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Issue Book</button>
+</form>
+{% endblock %}

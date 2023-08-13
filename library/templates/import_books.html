@@ -1,0 +1,14 @@
+<!-- library/templates/import_books.html -->
+{% extends 'index.html' %}
+
+{% block content %}
+<h2>Import Books from Frappe API</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="numBooks">Number of Books to Import:</label>
+        <input type="number" class="form-control" name="num_books" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Import Books</button>
+</form>
+{% endblock %}
